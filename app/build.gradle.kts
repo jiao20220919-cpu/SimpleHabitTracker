@@ -19,7 +19,10 @@ android {
     buildTypes {
         release {
             isMinifyEnabled = true
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
     compileOptions {
@@ -33,6 +36,7 @@ android {
         compose = true
     }
     composeOptions {
+        // 手动指定 Kotlin 编译器扩展版本，与 Kotlin 2.0 兼容的版本
         kotlinCompilerExtensionVersion = "1.5.14"
     }
 }
@@ -50,6 +54,4 @@ dependencies {
     kapt("androidx.room:room-compiler:2.6.1")
     implementation("androidx.room:room-ktx:2.6.1")
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.6")
-    // 添加 Compose 编译器依赖（关键）
-    implementation("androidx.compose.compiler:compiler:1.5.14")
 }
