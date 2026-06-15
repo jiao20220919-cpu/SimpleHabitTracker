@@ -14,13 +14,10 @@ class HabitRepository(
 
     suspend fun addHabit(habit: Habit) = habitDao.insert(habit)
 
-    suspend fun updateHabit(habit: Habit) = habitDao.update(habit)
-
     suspend fun deleteHabit(habitId: Long) = habitDao.delete(habitId)
 
     suspend fun toggleHabitForToday(habitId: Long, date: Long) {
-        val exists = habitLogDao.isCompleted(habitId, date)
-        if (exists) {
+        if (habitLogDao.isCompleted(habitId, date)) {
             habitLogDao.deleteLog(habitId, date)
         } else {
             habitLogDao.insert(HabitLog(habitId = habitId, date = date, completed = true))
