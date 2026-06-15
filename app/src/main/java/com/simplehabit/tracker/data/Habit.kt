@@ -10,6 +10,5 @@ data class Habit(
     val name: String,
     val description: String = "",
     val targetDays: Int = 0,
-    val reminderTime: Long? = null,
     val createdAt: Long = System.currentTimeMillis()
 )
