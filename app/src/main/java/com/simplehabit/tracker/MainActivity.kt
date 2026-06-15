@@ -25,17 +25,13 @@ class MainActivity : ComponentActivity() {
         ).build()
     }
     private val repository by lazy { HabitRepository(database.habitDao(), database.habitLogDao()) }
-    private val viewModel by lazy {
-        viewModel<HabitViewModel>(
-            factory = HabitViewModelFactory(repository)
-        )
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             SimpleHabitTrackerTheme {
                 Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
+                    val viewModel: HabitViewModel = viewModel(factory = HabitViewModelFactory(repository))
                     HomeScreen(viewModel)
                 }
             }
