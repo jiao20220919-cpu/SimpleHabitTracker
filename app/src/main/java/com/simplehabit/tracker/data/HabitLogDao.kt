@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface HabitLogDao {
-    @Query("SELECT * FROM habit_logs WHERE habitId = :habitId AND date >= :startDate ORDER BY date ASC")
+    @Query("SELECT * FROM habit_logs WHERE habitId = :habitId AND date >= :startDate")
     fun getLogsForHabit(habitId: Long, startDate: Long): Flow<List<HabitLog>>
 
     @Insert
